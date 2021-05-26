@@ -2,14 +2,14 @@ pipeline {
   agent any
   tools {
   
-  maven 'maven'
+  maven 'Maven'
    
   }
     stages {
 
       stage ('Checkout SCM'){
         steps {
-          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://iwayqtech@bitbucket.org/iwayqtech/devops-pipeline-project.git']]])
+          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '	git', url: 'https://For_demo@bitbucket.org/For_demo/appforlogin.git']]])
         }
       }
 	  
@@ -39,22 +39,22 @@ pipeline {
             steps {
                 rtServer (
                     id: "jfrog",
-                    url: "http://18.207.136.250:8082/artifactory",
+                    url: "http://3.235.177.236:8082/artifactory",
                     credentialsId: "jfrog"
                 )
 
                 rtMavenDeployer (
                     id: "MAVEN_DEPLOYER",
                     serverId: "jfrog",
-                    releaseRepo: "iwayq-libs-release-local",
-                    snapshotRepo: "iwayq-libs-snapshot-local"
+                    releaseRepo: "java-libs-release-local",
+                    snapshotRepo: "java-libs-snapshot-local"
                 )
 
                 rtMavenResolver (
                     id: "MAVEN_RESOLVER",
                     serverId: "jfrog",
-                    releaseRepo: "iwayq-libs-release",
-                    snapshotRepo: "iwayq-libs-snapshot"
+                    releaseRepo: "java-libs-release-local",
+                    snapshotRepo: "java-libs-snapshot-local"
                 )
             }
     }
@@ -82,10 +82,10 @@ pipeline {
     stage('Copy Dockerfile & Playbook to Ansible Server') {
             
             steps {
-                  sshagent(['sshkey']) {
+                  sshagent(['SSH_key']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@3.91.67.214:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@3.91.67.214:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@54.165.215.226:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@54.165.215.226:/home/ec2-user"
                     }
                 }
             
@@ -93,9 +93,9 @@ pipeline {
     stage('Build Container Image') {
             
             steps {
-                  sshagent(['sshkey']) {
+                  sshagent(['SSH_key']) {
                        
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.91.67.214 -C \"sudo ansible-playbook create-container-image.yaml\""
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.165.215.226 -C \"sudo ansible-playbook create-container-image.yaml\""
                         
                     }
                 }
@@ -104,10 +104,10 @@ pipeline {
     stage('Copy Deployent & Service Defination to K8s Master') {
             
             steps {
-                  sshagent(['sshkey']) {
+                  sshagent(['SSH_key']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no create-k8s-deployment.yaml ec2-user@3.237.42.29:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@3.237.42.29:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no create-k8s-deployment.yaml ec2-user@3.236.23.122:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@3.236.23.122:/home/ec2-user"
                     }
                 }
             
@@ -124,10 +124,10 @@ pipeline {
     stage('Deploy Artifacts to Production') {
             
             steps {
-                  sshagent(['sshkey']) {
+                  sshagent(['SSH_key']) {
                        
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.237.42.29 -C \"sudo kubectl apply -f create-k8s-deployment.yaml\""
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.237.42.29 -C \"sudo kubectl apply -f nodePort.yaml\""
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.236.23.122 -C \"sudo kubectl apply -f create-k8s-deployment.yaml\""
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@3.236.23.122 -C \"sudo kubectl apply -f nodePort.yaml\""
                         
                     }
                 }
