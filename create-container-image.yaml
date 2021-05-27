@@ -6,10 +6,10 @@
   - name: Pull .war artifact from Artifactory
     become: true
     get_url:
-      url: http://3.235.177.236:8082/artifactory/java-libs-release-local/com/iwayq/iwayQApp/1.0-RELEASE/iwayQApp-1.0-RELEASE.war
+      url: http://54.169.50.113:8082/artifactory/Pipeline-libs-release-local/com/iwayq/iwayQApp/1.0-RELEASE/iwayQApp-1.0-RELEASE.war
       dest: /home/ec2-user
-      url_username: admin
-      url_password: Password@143
+      url_username: jfrogskill
+      url_password: May@2021
 
   - name: Rename .war Artifact
     command: mv iwayQApp-1.0-RELEASE.war iwayq.war
