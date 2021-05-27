@@ -76,7 +76,13 @@
         </plugin>
 		</plugins>
 	</build>
-	curl -u sai:May@2021 -T  "http://3.235.177.236:8082/artifactory/Demo-generic-local/"
+	<distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>ip-172-31-13-226.ec2.internal-releases</name>
+        <url>http://18.204.4.72:8082/artifactory/maven-libs-release-local</url>
+    </repository>
+</distributionManagement>
 
 
 </project>
