@@ -39,7 +39,7 @@ pipeline {
             steps {
                 rtServer (
                     id: "jfrog",
-                    url: "http://3.235.177.236:8082/artifactory",
+                    url: "http://3.235.177.236:8082/artifactory/java-libs-release-local/",
                     credentialsId: "jfrog"
                 )
 
