@@ -46,15 +46,15 @@ pipeline {
                 rtMavenDeployer (
                     id: "MAVEN_DEPLOYER",
                     serverId: "jfrog",
-                    releaseRepo: "maven-libs-release-local",
-                    snapshotRepo: "maven-libs-release-local"
+                    releaseRepo: "Pipeline-libs-release-local",
+                    snapshotRepo: "Pipeline-libs-snapshot-local"
                 )
 
                 rtMavenResolver (
                     id: "MAVEN_RESOLVER",
                     serverId: "jfrog",
-                    releaseRepo: "maven-libs-release-local",
-                    snapshotRepo: "maven-libs-release-local"
+                    releaseRepo: "Pipeline-libs-release-local",
+                    snapshotRepo: "Pipeline-libs-snapshot-local"
                 )
             }
     }
