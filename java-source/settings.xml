@@ -1,4 +1,4 @@
-?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
@@ -21,14 +21,14 @@
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
-          <name>java-libs-release</name>
-          <url>http://3.235.177.236:8082/artifactory/java-libs-release</url>
+          <name>maven-libs-release</name>
+          <url>http://18.204.4.72:8082/artifactory/maven-libs-release</url>
         </repository>
         <repository>
           <snapshots />
           <id>snapshots</id>
-          <name>java-libs-snapshot</name>
-          <url>http://3.235.177.236:8082/artifactory/java-libs-snapshot</url>
+          <name>maven-libs-snapshot</name>
+          <url>http://18.204.4.72:8082/artifactory/maven-libs-snapshot</url>
         </repository>
       </repositories>
       <pluginRepositories>
@@ -37,14 +37,14 @@
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
-          <name>java-libs-release</name>
-          <url>http://3.235.177.236:8082/artifactory/java-libs-release</url>
+          <name>maven-libs-release</name>
+          <url>http://18.204.4.72:8082/artifactory/maven-libs-release</url>
         </pluginRepository>
         <pluginRepository>
           <snapshots />
           <id>snapshots</id>
-          <name>java-libs-snapshot</name>
-          <url>http://3.235.177.236:8082/artifactory/java-libs-snapshot</url>
+          <name>maven-libs-snapshot</name>
+          <url>http://18.204.4.72:8082/artifactory/maven-libs-snapshot</url>
         </pluginRepository>
       </pluginRepositories>
       <id>artifactory</id>
