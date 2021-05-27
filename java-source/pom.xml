@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.2.4.RELEASE</version>
-		<relativePath/>../pom.xml<relativePath/>
+		<<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.iwayq</groupId>
 	<artifactId>iwayQApp</artifactId>
@@ -65,6 +65,15 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.3</version>
+              <configuration>
+                  <source>1.8</source>
+                  <target>1.8</target>
+              </configuration>
+        </plugin>
 		</plugins>
 	</build>
 	<distributionManagement>
