@@ -3,13 +3,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
     <server>
-      <username>admin</username>
-      <password>Password@143</password>
+      <username>jfrogskill</username>
+      <password>May@2021</password>
       <id>central</id>
     </server>
     <server>
-      <username>admin</username>
-      <password>Password@143</password>
+      <username>jfrogskill</username>
+      <password>May@2021</password>
       <id>snapshots</id>
     </server>
   </servers>
@@ -21,14 +21,14 @@
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
-          <name>maven-libs-release</name>
-          <url>http://18.204.4.72:8082/artifactory/maven-libs-release</url>
+          <name>Pipeline-libs-release</name>
+          <url>http://54.169.50.113:8082/artifactory/Pipeline-libs-release</url>
         </repository>
         <repository>
           <snapshots />
           <id>snapshots</id>
-          <name>maven-libs-snapshot</name>
-          <url>http://18.204.4.72:8082/artifactory/maven-libs-snapshot</url>
+          <name>Pipeline-libs-snapshot</name>
+          <url>http://54.169.50.113:8082/artifactory/Pipeline-libs-snapshot</url>
         </repository>
       </repositories>
       <pluginRepositories>
@@ -37,14 +37,14 @@
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
-          <name>maven-libs-release</name>
-          <url>http://18.204.4.72:8082/artifactory/maven-libs-release</url>
+          <name>Pipeline-libs-release</name>
+          <url>http://54.169.50.113:8082/artifactory/Pipeline-libs-release</url>
         </pluginRepository>
         <pluginRepository>
           <snapshots />
           <id>snapshots</id>
-          <name>maven-libs-snapshot</name>
-          <url>http://18.204.4.72:8082/artifactory/maven-libs-snapshot</url>
+          <name>Pipeline-libs-snapshot</name>
+          <url>http://54.169.50.113:8082/artifactory/Pipeline-libs-snapshot</url>
         </pluginRepository>
       </pluginRepositories>
       <id>artifactory</id>
