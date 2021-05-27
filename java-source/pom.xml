@@ -79,10 +79,11 @@
 	<distributionManagement>
     <repository>
         <id>central</id>
-        <name>ip-172-31-13-226.ec2.internal-releases</name>
-        <url>http://18.204.4.72:8082/artifactory/maven-libs-release-local</url>
+        <name>ip-172-31-21-184.ap-southeast-1.compute.internal-releases</name>
+        <url>http://54.169.50.113:8082/artifactory/Pipeline-libs-release-local</url>
     </repository>
 </distributionManagement>
+	
 
 
 </project>
