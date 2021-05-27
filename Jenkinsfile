@@ -38,23 +38,23 @@ pipeline {
     stage ('Artifactory configuration') {
             steps {
                 rtServer (
-                    id: "jfrog",
-                    url: "http://3.235.177.236:8082/artifactory/java-libs-release-local/",
-                    credentialsId: "jfrog"
+                    id: "j",
+                    url: "http://3.235.177.236:8082/artifactory/Demo-generic-local/",
+                    credentialsId: "j"
                 )
 
                 rtMavenDeployer (
                     id: "MAVEN_DEPLOYER",
-                    serverId: "jfrog",
-                    releaseRepo: "java-libs-release-local",
-                    snapshotRepo: "java-libs-snapshot-local"
+                    serverId: "	j",
+                    releaseRepo: "Demo-generic-local",
+                    snapshotRepo: "Demo-snapshot-local"
                 )
 
                 rtMavenResolver (
                     id: "MAVEN_RESOLVER",
-                    serverId: "jfrog",
-                    releaseRepo: "java-libs-release-local",
-                    snapshotRepo: "java-libs-snapshot-local"
+                    serverId: "	j",
+                    releaseRepo: "Demo-generic-local",
+                    snapshotRepo: "Demo-snapshot-local"
                 )
             }
     }
@@ -74,7 +74,7 @@ pipeline {
     stage ('Publish build info') {
             steps {
                 rtPublishBuildInfo (
-                    serverId: "jfrog"
+                    serverId: "j"
              )
         }
     }
