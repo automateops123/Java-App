@@ -9,7 +9,7 @@
       dest: /home/ec2-user
 
   - name: Rename .war Artifact
-    command: mv iwayQApp-2.0-RELEASE.war iwayq.war
+    command: mv iwayQApp-2.0-RELEASE.war demo.war
   
   - name: Pull Tomcat  Container Image
     docker_image:
