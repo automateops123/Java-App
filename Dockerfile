@@ -3,7 +3,7 @@
 FROM tomcat:latest
 
 # Maintainer
-MAINTAINER "SAI - iwayQ" 
+MAINTAINER "SAI - demo" 
 
 # copy war file on to container 
 COPY ./iwayq.war /usr/local/tomcat/webapps
