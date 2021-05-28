@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-deploy
+  name: demoq-deploy
   labels:
-    app: demo-app
+    app: demoq-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: demo-app
+      app: demoq-app
   template:
     metadata:
       labels:
-        app: demo-app
+        app: demoq-app
     spec:
       containers:
-      - name: demo-container
-        image: demodockertest/demo:1.0
+      - name: demoq-container
+        image: demoqdockertest/demoq:1.0
         ports:
         - containerPort: 8080
