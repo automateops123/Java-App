@@ -4,10 +4,10 @@ kind: Service
 metadata:
   name: iwayq-service
   labels:
-    app: demoq-app
+    app: iwayq-app
 spec:
   selector:
-    app: demoq-app
+    app: iwayq-app
 
   type: NodePort
   ports:
