@@ -18,7 +18,7 @@
 
   - name: Build image and with build args
     docker_image:
-      name: demoq
+      name: iwayq
       build:
         path: /home/ec2-user
         pull: no
@@ -34,7 +34,7 @@
     
   - name: Push to docker hub
     docker_image:
-      name: demoq
-      repository: saikumar0803/demoq:1.0
+      name: iwayq
+      repository: saikumar0803/iwayq:1.0
       push: yes
       source: local
