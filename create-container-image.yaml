@@ -9,7 +9,6 @@
       dest: /home/ec2-user
       
   - name: copy files
-  become: true
     copy:
       src: /home/jenkinsslave/workspace/Demo_project/.*
       dest: /home/ec2-user
