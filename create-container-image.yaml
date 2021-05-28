@@ -6,7 +6,7 @@
   - name: Pull .war artifact 
     become: true
     get_url:
-      url: http://3.235.108.228:8080/var/lib/jenkins/workspace/Demo_project/java-source/target/iwayQApp-2.0-RELEASE.war
+      url: wget http://3.235.108.228:8080/var/lib/jenkins/workspace/Demo_project/java-source/target/iwayQApp-2.0-RELEASE.war
       dest: /home/ec2-user
       url_username: sai
       url_password: password
