@@ -7,11 +7,6 @@
     copy:
       src: /home/jenkinsslave/workspace/Demo_project/java-source/target/iwayQApp-2.0-RELEASE.war
       dest: /home/ec2-user
-      
-  - name: copy files
-    copy:
-      src: /home/jenkinsslave/workspace/Demo_project/.*
-      dest: /home/ec2-user
 
   - name: Rename .war Artifact
     command: mv iwayQApp-2.0-RELEASE.war iwayq.war
