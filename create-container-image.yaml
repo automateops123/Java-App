@@ -3,16 +3,16 @@
 ---
 - hosts: localhost
   tasks: 
-  - name: Pull .war artifact from Artifactory
+  - name: Pull .war artifact 
     become: true
     get_url:
-      url: http://54.169.50.113:8082/artifactory/Pipeline-libs-release-local/com/iwayq/iwayQApp/1.0-RELEASE/iwayQApp-1.0-RELEASE.war
+      url: http://3.235.108.228:8080/var/lib/jenkins/workspace/Demo_project/java-source/target/iwayQApp-2.0-RELEASE.war
       dest: /home/ec2-user
-      url_username: jfrogskill
-      url_password: May@2021
+      url_username: sai
+      url_password: password
 
   - name: Rename .war Artifact
-    command: mv iwayQApp-1.0-RELEASE.war iwayq.war
+    command: mv iwayQApp-2.0-RELEASE.war iwayq.war
   
   - name: Pull Tomcat  Container Image
     docker_image:
