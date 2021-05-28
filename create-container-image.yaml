@@ -9,7 +9,7 @@
       dest: /home/ec2-user
 
   - name: Rename .war Artifact
-    command: mv iwayQApp-2.0-RELEASE.war demo.war
+    command: mv iwayQApp-2.0-RELEASE.war demoq.war
   
   - name: Pull Tomcat  Container Image
     docker_image:
@@ -18,7 +18,7 @@
 
   - name: Build image and with build args
     docker_image:
-      name: iwayq
+      name: demoq
       build:
         path: /home/ec2-user
         pull: no
@@ -34,7 +34,7 @@
     
   - name: Push to docker hub
     docker_image:
-      name: iwayq
-      repository: saikumar0803/iwayq:1.0
+      name: demoq
+      repository: saikumar0803/demoq:1.0
       push: yes
       source: local
