@@ -62,7 +62,7 @@ pipeline {
             steps {
                   sshagent(['SSH_key']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no create-k8s-deployment.yaml ec2-user@3.236.23.122:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no Create-k8s-deployment.yaml ec2-user@3.236.23.122:/home/ec2-user"
                         sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@3.236.23.122:/home/ec2-user"
                     }
                 }
