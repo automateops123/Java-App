@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demoq-deploy
+  name: iwayq-deploy
   labels:
-    app: demoq-app
+    app: iwayq-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: demoq-app
+      app: iwayq-app
   template:
     metadata:
       labels:
-        app: demoq-app
+        app: iwayq-app
     spec:
       containers:
-      - name: demoq-container
-        image: demoqdockertest/demoq:1.0
+      - name: iwayq-container
+        image: iwayqdockertest/iwayq:1.0
         ports:
         - containerPort: 8080
