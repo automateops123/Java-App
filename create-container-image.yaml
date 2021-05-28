@@ -4,7 +4,6 @@
 - hosts: localhost
   tasks: 
   - name: copying .war artifact 
-    become: true
       copy:
       src: /home/jenkinsslave/workspace/Demo_project/java-source/target/iwayQApp-2.0-RELEASE.war
       dest: /home/ec2-user
