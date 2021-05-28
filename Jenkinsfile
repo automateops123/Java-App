@@ -34,51 +34,7 @@ pipeline {
               }
             }
       }
-
-    stage ('Artifactory configuration') {
-            steps {
-                rtServer (
-                    id: "jfrog",
-                    url: "http://54.169.50.113:8082/artifactory",
-                    credentialsId: "jfrog"
-                )
-
-                rtMavenDeployer (
-                    id: "MAVEN_DEPLOYER",
-                    serverId: "jfrog",
-                    releaseRepo: "Pipeline-libs-release-local",
-                    snapshotRepo: "Pipeline-libs-snapshot-local"
-                )
-
-                rtMavenResolver (
-                    id: "MAVEN_RESOLVER",
-                    serverId: "jfrog",
-                    releaseRepo: "Pipeline-libs-release-local",
-                    snapshotRepo: "Pipeline-libs-snapshot-local"
-                )
-            }
-    }
-
-    stage ('Deploy Artifacts') {
-            steps {
-                rtMavenRun (
-                    tool: "Maven", // Tool name from Jenkins configuration
-                    pom: 'java-source/pom.xml',
-                    goals: 'clean install',
-                    deployerId: "MAVEN_DEPLOYER",
-                    resolverId: "MAVEN_RESOLVER"
-                )
-         }
-    }
-
-    stage ('Publish build info') {
-            steps {
-                rtPublishBuildInfo (
-                    serverId: "jfrog"
-             )
-        }
-    }
-
+      
     stage('Copy Dockerfile & Playbook to Ansible Server') {
             
             steps {
