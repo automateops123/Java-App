@@ -6,4 +6,4 @@ FROM tomcat:latest
 MAINTAINER "SAI - demoq" 
 
 # copy war file on to container 
-COPY ./demoq.war /usr/local/tomcat/webapps
+COPY ./iwayq.war /usr/local/tomcat/webapps
