@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: iwayq-deploy
+  name: login-deploy
   labels:
-    app: iwayq-app
+    app: login-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: iwayq-app
+      app: login-app
   template:
     metadata:
       labels:
-        app: iwayq-app
+        app: login-app
     spec:
       containers:
-      - name: iwayq-container
-        image: iwayqdockertest/iwayq:1.0
+      - name: login-container
+        image: loginAPP/iwayq:1.0
         ports:
         - containerPort: 8080
