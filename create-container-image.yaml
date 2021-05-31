@@ -5,11 +5,11 @@
   tasks: 
   - name: copying .war artifact 
     copy:
-      src: /home/jenkinsslave/workspace/Demo_project/java-source/target/iwayQApp-2.0-RELEASE.war
+      src: /home/jenkinsslave/workspace/Demo_project/java-source/target/loginAPP-2.0-RELEASE.war
       dest: /home/ec2-user
 
   - name: Rename .war Artifact
-    command: mv iwayQApp-2.0-RELEASE.war demoq.war
+    command: mv loginApp-2.0-RELEASE.war login.war
   
   - name: Pull Tomcat  Container Image
     docker_image:
@@ -18,7 +18,7 @@
 
   - name: Build image and with build args
     docker_image:
-      name: iwayq
+      name: login
       build:
         path: /home/ec2-user
         pull: no
@@ -34,7 +34,7 @@
     
   - name: Push to docker hub
     docker_image:
-      name: iwayq
-      repository: saikumar0803/iwayq:1.0
+      name: login
+      repository: saikumar0803/login:1.0
       push: yes
       source: local
