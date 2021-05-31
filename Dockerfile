@@ -3,7 +3,7 @@
 FROM tomcat:latest
 
 # Maintainer
-MAINTAINER "SAI - demoq" 
+MAINTAINER "SAI" 
 
 # copy war file on to container 
-COPY ./iwayq.war /usr/local/tomcat/webapps
+COPY ./login.war /usr/local/tomcat/webapps
