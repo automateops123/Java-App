@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: iwayq-service
+  name: login-service
   labels:
-    app: iwayq-app
+    app: login-app
 spec:
   selector:
-    app: iwayq-app
+    app: login-app
 
   type: NodePort
   ports:
