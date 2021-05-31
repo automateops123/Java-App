@@ -26,7 +26,7 @@ pipeline {
     stage('Copy Dockerfile & Playbook to Ansible Server') {
             
             steps {
-                  sshagent(['SSH_key']) {
+                  sshagent(['ssh_keys']) {
                        
                         sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@54.255.173.76:/home/ec2-user"
                         sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@54.255.173.76:/home/ec2-user"
@@ -37,7 +37,7 @@ pipeline {
     stage('Build Container Image') {
             
             steps {
-                  sshagent(['SSH_key']) {
+                  sshagent(['ssh_keys']) {
                        
                         sh "ssh -o StrictHostKeyChecking=no ec2-user@54.255.173.76 -C \"sudo ansible-playbook create-container-image.yaml\""
                         
@@ -48,7 +48,7 @@ pipeline {
     stage('Copy Deployent & Service Defination to K8s Master') {
             
             steps {
-                  sshagent(['SSH_key']) {
+                  sshagent(['ssh_keys']) {
                        
                         sh "scp -o StrictHostKeyChecking=no Create-k8s-deployment.yaml ec2-user@34.200.224.3:/home/ec2-user"
                         sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@34.200.224.3:/home/ec2-user"
@@ -68,7 +68,7 @@ pipeline {
     stage('Deploy Artifacts to Production') {
             
             steps {
-                  sshagent(['SSH_key']) {
+                  sshagent(['ssh_keys']) {
                        
                         sh "ssh -o StrictHostKeyChecking=no ec2-user@34.200.224.3 -C \"sudo kubectl apply -f Create-k8s-deployment.yaml\""
                         sh "ssh -o StrictHostKeyChecking=no ec2-user@34.200.224.3 -C \"sudo kubectl apply -f nodePort.yaml\""
