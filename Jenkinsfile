@@ -1,5 +1,5 @@
 pipeline {
-  agent {label 'javaloginapp'} 
+  agent any
   tools {
   
   maven 'maven'
