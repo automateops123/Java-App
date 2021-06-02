@@ -40,8 +40,8 @@ pipeline {
             steps {
                   sshagent(['ssh_keys']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@13.212.181.102:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@13.212.181.102:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@13.229.238.128:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@13.229.238.128:/home/ec2-user"
                     }
                 }
             
@@ -51,7 +51,7 @@ pipeline {
             steps {
                   sshagent(['ssh_keys']) {
                        
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@13.212.181.102 -C \"sudo ansible-playbook create-container-image.yaml\""
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@13.229.238.128 -C \"sudo ansible-playbook create-container-image.yaml\""
                         
                     }
                 }
