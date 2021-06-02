@@ -5,7 +5,7 @@
   tasks: 
   - name: copying .war artifact 
     copy:
-      src: /home/jenkinsslave/workspace/Jenkins-Pipeline/java-source/target/loginAPP-2.0-RELEASE.war
+      src: /home/jenkinsslave/workspace/Jenkins-Pipeline/java-source/target/loginApp-2.0-RELEASE.war
       dest: /home/ec2-user
 
   - name: Rename .war Artifact
