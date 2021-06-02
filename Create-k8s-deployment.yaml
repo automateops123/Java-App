@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: login-container
-        image: loginAPP/iwayq:1.0
+        image: loginAPP/login:2.0
         ports:
         - containerPort: 8080
