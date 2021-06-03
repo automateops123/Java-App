@@ -40,8 +40,8 @@ pipeline {
             steps {
                   sshagent(['ssh_keys']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@13.229.238.128:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@13.229.238.128:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@54.169.213.31:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@54.169.213.31:/home/ec2-user"
                     }
                 }
             
@@ -51,7 +51,7 @@ pipeline {
             steps {
                   sshagent(['ssh_keys']) {
                        
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@13.229.238.128 -C \"sudo ansible-playbook create-container-image.yaml\""
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.169.213.31 -C \"sudo ansible-playbook create-container-image.yaml\""
                         
                     }
                 }
@@ -62,8 +62,8 @@ pipeline {
             steps {
                   sshagent(['ssh_keys']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no Create-k8s-deployment.yaml ec2-user@54.179.239.54:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@54.179.239.54:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no Create-k8s-deployment.yaml ec2-user@13.250.121.42:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@13.250.121.42:/home/ec2-user"
                     }
                 }
             
@@ -82,8 +82,8 @@ pipeline {
             steps {
                   sshagent(['ssh_keys']) {
                        
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.239.54 -C \"sudo kubectl apply -f Create-k8s-deployment.yaml\""
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.239.54 -C \"sudo kubectl apply -f nodePort.yaml\""
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@13.250.121.42 -C \"sudo kubectl apply -f Create-k8s-deployment.yaml\""
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@13.250.121.42 -C \"sudo kubectl apply -f nodePort.yaml\""
                         
                     }
                 }
