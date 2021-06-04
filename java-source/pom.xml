@@ -5,10 +5,12 @@
 	 <parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.krishna</groupId>
 	<artifactId>login</artifactId>
+	<version>1.0</version>
 	<packaging>war</packaging>
 	<name>loginApp</name>
 	<description>DevOps project for Spring Boot</description>
