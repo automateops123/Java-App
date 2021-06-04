@@ -16,6 +16,7 @@ pipeline {
 	  stage ('Build')  {
 	      steps {
           
+            sh "mv /home/jenkinsslave/workspace/Jenkins-Pipeline/java-source/target/loginApp-2.0-RELEASE.war /tmp
             dir('java-source'){
             sh "mvn package"
           }
