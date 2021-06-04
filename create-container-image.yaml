@@ -5,11 +5,11 @@
   tasks: 
   - name: copying .war artifact 
     copy:
-      src: /home/jenkinsslave/workspace/Jenkins-Pipeline/java-source/target/login-1.0.war
+      src: /home/jenkinsslave/workspace/Jenkins-Pipeline/java-source/target/login-2.0.war
       dest: /home/ec2-user
 
   - name: Rename .war Artifact
-    command: mv login-1.0.war login.war
+    command: mv login-2.0.war login.war
   
   - name: Pull Tomcat  Container Image
     docker_image:
@@ -35,6 +35,6 @@
   - name: Push to docker hub
     docker_image:
       name: login
-      repository: saikumar0803/login:6.0
+      repository: saikumar0803/login:7.0
       push: yes
       source: local
