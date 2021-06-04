@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-Already registered!! <a href="login">Login Here demo</a>
+Already registered!! <a href="login">Login Here</a>
 </body>
 </html>
