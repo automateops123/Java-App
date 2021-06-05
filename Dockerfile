@@ -6,4 +6,4 @@ FROM tomcat:latest
 MAINTAINER "SAI" 
 
 # copy war file on to container 
-COPY ./login2.war /usr/local/tomcat/webapps
+COPY login-6.0.war /usr/local/tomcat/webapps
