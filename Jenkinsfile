@@ -16,7 +16,7 @@ pipeline {
 	  stage ('Build')  {
 	      steps {
           
-           sh " mv /home/jenkinsslave/workspace/Jenkins-Pipeline/java-source/target/login-5.0* /tmp"
+           sh " mv /home/jenkinsslave/workspace/Jenkins-Pipeline/java-source/target/login-6.0* /tmp"
           
             dir('java-source'){
             sh "mvn package"
