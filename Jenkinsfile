@@ -41,6 +41,7 @@ pipeline {
                   sshagent(['ssh_keys']) {
                        
                         sh "ssh -o StrictHostKeyChecking=no ec2-user@54.254.205.226 -C \"sudo ansible-playbook create-container-image.yaml\""
+                         sh "ssh -o StrictHostKeyChecking=no ec2-user@54.254.205.226 -C \"sudo ansible-playbook Dockerfile\""
                         
                     }
                 }
