@@ -10,7 +10,7 @@
   
   - name: Pull Tomcat  Container Image
     docker_image:
-      name: tomcat:latest
+      name: tomcat
       source: pull
 
   - name: Build image and with build args
