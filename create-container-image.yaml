@@ -10,7 +10,7 @@
 
   - name: Build image and with build args
     docker_image:
-      name: blue:1.0
+      name: blue
       build:
         path: /home/ec2-user
         pull: no
