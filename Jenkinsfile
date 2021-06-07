@@ -1,4 +1,8 @@
 pipeline {
+   environment {
+    buildNumber = "BUILD_NUMBER"
+    }
+
    agent {label 'javaloginapp'}
    tools {
   
