@@ -15,7 +15,7 @@
 
   - name: Build image and with build args
     docker_image:
-      name: login
+      name: iwayq .
       build:
         path: /home/ec2-user
         pull: no
@@ -23,15 +23,4 @@
           listen_port: 8080
       source: build
 
-  - name: Log into DockerHub
-    docker_login:
-     username: saikumar0803
-     password: rams@0803
-
-    
-  - name: Push to docker hub
-    docker_image:
-      name: login
-      repository: saikumar0803/blue:1.0
-      push: yes
-      source: local
+  
