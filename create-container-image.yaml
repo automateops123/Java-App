@@ -10,7 +10,7 @@
 
   - name: Build image and with build args
     docker_image:
-      name: sai
+      name: ram
       build:
         path: /home/ec2-user
         pull: no
@@ -25,8 +25,8 @@
     
   - name: Push to docker hub
     docker_image:
-      name: sai
-      repository: saikumar0803/sai:1.0
+      name: ram
+      repository: saikumar0803/ram
       push: yes
       source: local
   
