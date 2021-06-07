@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: login-container
-        image: saikumar0803/bike:$build_number
+        image: saikumar0803/bike:5.0
         ports:
         - containerPort: 8080
