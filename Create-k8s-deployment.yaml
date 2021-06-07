@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: login-container
-        image: saikumar0803/blue
+        image: saikumar0803/blue:1.0
         ports:
         - containerPort: 8080
