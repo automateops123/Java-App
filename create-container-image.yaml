@@ -26,7 +26,7 @@
   - name: Push to docker hub
     docker_image:
       name: sai
-      repository: saikumar0803/sai:latest
+      repository: saikumar0803/sai:1.0
       push: yes
       source: local
   
