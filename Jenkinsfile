@@ -16,8 +16,6 @@ pipeline {
 	  stage ('Build')  {
 	      steps {
           
-           sh " mv /home/jenkinsslave/workspace/Jenkins-Pipeline/java-source/target/iwayQApp-2.0-RELEASE* /tmp"
-          
             dir('java-source'){
             sh "mvn package"
           }
