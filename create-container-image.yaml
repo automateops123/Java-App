@@ -10,7 +10,7 @@
 
   - name: Build image and with build args
     docker_image:
-      name: bike
+      name: bike:5.0
       build:
         path: /home/ec2-user
         pull: no
@@ -25,7 +25,7 @@
     
   - name: Push to docker hub
     docker_image:
-      name: bike
+      name: bike:5.0
       repository: saikumar0803/bike
       push: yes
       source: local
