@@ -19,7 +19,7 @@
       source: build
 
   - name: Log into DockerHub
-     docker_login:
+    docker_login:
       username: saikumar0803
       password: rams@0803
     
