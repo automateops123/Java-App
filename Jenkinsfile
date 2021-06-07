@@ -16,7 +16,7 @@ pipeline {
 	  stage ('Build')  {
 	      steps {
           
-           sh " mv /home/jenkinsslave/workspace/Jenkins-Pipeline/java-source/target/login-6.0* /tmp"
+           sh " mv /home/jenkinsslave/workspace/Jenkins-Pipeline/java-source/target/iwayQApp-2.0-RELEASE* /tmp"
           
             dir('java-source'){
             sh "mvn package"
@@ -29,8 +29,8 @@ pipeline {
             steps {
                   sshagent(['ssh_keys']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@54.254.205.226:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@54.254.205.226:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@13.250.60.232:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@13.250.60.232:/home/ec2-user"
                     }
                 }
             
@@ -40,7 +40,7 @@ pipeline {
             steps {
                   sshagent(['ssh_keys']) {
                        
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.254.205.226 -C \"sudo ansible-playbook create-container-image.yaml\""
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@13.250.60.232 -C \"sudo ansible-playbook create-container-image.yaml\""
                          
                         
                     }
@@ -52,8 +52,8 @@ pipeline {
             steps {
                   sshagent(['ssh_keys']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no Create-k8s-deployment.yaml ec2-user@54.179.104.67:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@54.179.104.67:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no Create-k8s-deployment.yaml ec2-user@54.179.249.90:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@54.179.249.90:/home/ec2-user"
                     }
                 }
             
@@ -63,8 +63,8 @@ pipeline {
             steps {
                   sshagent(['ssh_keys']) {
                        
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.104.67 -C \"sudo kubectl apply -f Create-k8s-deployment.yaml\""
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.104.67 -C \"sudo kubectl apply -f nodePort.yaml\""
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.249.90 -C \"sudo kubectl apply -f Create-k8s-deployment.yaml\""
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.249.90 -C \"sudo kubectl apply -f nodePort.yaml\""
                         
                     }
                 }
