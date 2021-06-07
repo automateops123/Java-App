@@ -1,7 +1,7 @@
 pipeline {
   agent {label 'javaloginapp'}
   
-  def buildnumer= BUILD_NUMBER
+  def buildnumber= BUILD_NUMBER
   tools {
   
   maven 'maven'
