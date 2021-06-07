@@ -27,7 +27,7 @@
   - name: Push to docker hub
     docker_image:
       name: login
-      repository: saikumar0803/blue:1.0
+      repository: saikumar0803/blue:2.0
       push: yes
       source: local
   
