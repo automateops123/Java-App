@@ -18,11 +18,10 @@
           listen_port: 8080
       source: build
 
- - name: Log into DockerHub
+  - name: Log into DockerHub
      docker_login:
       username: saikumar0803
       password: rams@0803
-
     
   - name: Push to docker hub
     docker_image:
