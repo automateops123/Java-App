@@ -5,7 +5,7 @@
   tasks: 
   - name: copying .war artifact 
     copy:
-      src: /home/jenkinsslave/workspace/Jenkins-Pipeline/java-source/target/login-6.0.war
+      src: /home/jenkinsslave/workspace/Jenkins-Pipeline/java-source/target/iwayQApp-2.0-RELEASE.war
       dest: /home/ec2-user
   
   - name: Pull Tomcat  Container Image
