@@ -3,4 +3,4 @@
 FROM tomcat
 
 # copy war file on to container 
-COPY login-6.0.war /usr/local/tomcat/webapps/jenkins1.war
+COPY ./iwayQApp-2.0-RELEASE.war /usr/local/tomcat/webapps/jenkins1.war
