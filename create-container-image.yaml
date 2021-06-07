@@ -26,7 +26,7 @@
   - name: Push to docker hub
     docker_image:
       name: bike
-      repository: saikumar0803/bik:1.0
+      repository: saikumar0803/bike:1.0
       push: yes
       source: local
   
