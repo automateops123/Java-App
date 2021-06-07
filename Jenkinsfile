@@ -1,13 +1,15 @@
 pipeline {
-  agent {label 'javaloginapp'}
+   environment {
+    buildNumber = "BUILD_NUMBER"
+   }
+   agent {label 'javaloginapp'}
   
-  def buildnumber= BUILD_NUMBER
-  tools {
+   tools {
   
-  maven 'maven'
+   maven 'maven'
    
-  }
-    stages {
+   }
+  stages {
 
       stage ('Checkout SCM'){
         steps {
@@ -15,7 +17,7 @@ pipeline {
         }
       }
 	  
-	  stage ('Build')  {
+   stage ('Build')  {
 	      steps {
           
             dir('java-source'){
