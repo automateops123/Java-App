@@ -70,7 +70,7 @@ pipeline {
                                sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.249.90 -C \"sudo kubectl apply -f . --validate=false\""
                           }catch(error){
                                sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.249.90 -C \"sudo kubectl create -f . --validate=false\""
-
+                        
                     }
                 }
             
@@ -82,4 +82,5 @@ pipeline {
 def getDockerTag(){
     def tag = sh script: 'git rev-parse HEAD', returnStdout: true
     return tag
+  }
 }
