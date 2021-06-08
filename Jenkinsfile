@@ -25,7 +25,7 @@ pipeline {
         }
          
       }
-    stage ('build image') {
+      stage ('build image') {
         steps {
        
              sh "cp /var/lib/jenkins/workspace/Jenkins-Pipeline/java-source/target/iwayQApp-2.0-RELEASE.war ."
@@ -61,7 +61,7 @@ pipeline {
                 }
             
         }     
-    stage('Deploy Artifacts to Production') {
+      stage('Deploy Artifacts to Production') {
             
             steps {
                   sshagent(['ssh_keys']) {
@@ -73,14 +73,14 @@ pipeline {
                         
                     }
                 }
-            
-        } 
-         
-   } 
+            }
+         } 
+      }     
+    }
 }
+
 
 def getDockerTag(){
     def tag = sh script: 'git rev-parse HEAD', returnStdout: true
     return tag
-  }
 }
