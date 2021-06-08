@@ -24,6 +24,6 @@ spec:
       containers:
       - name: login-container
         image: saikumar0803/bike
-		imagePullPolicy: Always
+        imagePullPolicy : Always
         ports:
         - containerPort: 8080
