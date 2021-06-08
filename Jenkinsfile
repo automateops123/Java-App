@@ -6,7 +6,8 @@ node{
     } 
     
     stage("MVN Package"){
-      sh "/usr/local/apache-maven/bin/mvn package"
+      def mavenHome= tool name: "maven",type:"maven"
+      sh "${mavenHome}/bin/mvn package
    }
    
 }
