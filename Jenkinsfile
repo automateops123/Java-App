@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  environment{
+       DOCKER_TAG = getDockerTag()
+  }
   tools {
   
   maven 'maven'
@@ -26,7 +29,7 @@ pipeline {
         steps {
        
              sh "cp /var/lib/jenkins/workspace/Jenkins-Pipeline/java-source/target/iwayQApp-2.0-RELEASE.war ."
-             sh "docker build -t saikumar0803/bike ."
+             sh "docker build . -t saikumar0803/bike:${DOCKER_TAG} "
 
         }
        
@@ -39,7 +42,7 @@ pipeline {
      
          }
         
-             sh "docker push saikumar0803/bike"
+             sh "docker push saikumar0803/bike:${DOCKER_TAG}"
 
         }
        
@@ -48,6 +51,8 @@ pipeline {
     stage('Copy Deployent & Service Defination to K8s Master') {
             
             steps {
+                  sh "chmod +x ChangeTag.sh"
+                  sh "./ChangeTag.sh ${DOCKER_TAG}"
                   sshagent(['ssh_keys']) {
                        
                         sh "scp -o StrictHostKeyChecking=no Create-k8s-deployment.yaml ec2-user@54.179.249.90:/home/ec2-user"
@@ -70,4 +75,9 @@ pipeline {
         } 
          
    } 
+}
+
+def getDockerTag(){
+    def tag = sh script: 'git rev-parse HEAD', returnStdout: true
+    return tag
 }
