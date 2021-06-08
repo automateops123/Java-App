@@ -3,4 +3,4 @@
 FROM tomcat:latest
 
 # copy war file on to container 
-COPY ./iwayQApp-2.0-RELEASE.war /usr/local/tomcat/webapps/jen.war
+COPY target/iwayQApp-2.0-RELEASE.war /usr/local/tomcat/webapps/jen.war
