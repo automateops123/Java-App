@@ -1,11 +1,11 @@
 pipeline {
-  agent any
-   tools {
+  agent (label {"javaloginapp"})
+  tools {
   
-   maven 'maven'
+  maven 'Maven'
    
-   }
-  stages {
+  }
+    stages {
 
       stage ('Checkout SCM'){
         steps {
@@ -13,7 +13,7 @@ pipeline {
         }
       }
 	  
-   stage ('Build')  {
+	  stage ('Build')  {
 	      steps {
           
             dir('java-source'){
@@ -22,27 +22,52 @@ pipeline {
         }
          
       }
-	  
-	 stage('Copy Deployent & Service Defination to K8s Master') {
+    stage('Copy Dockerfile & Playbook to Ansible Server') {
             
             steps {
-                  sshagent(['ssh_keys']) {
+                  sshagent(['SSH_key']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no Create-k8s-deployment.yaml ec2-user@54.179.249.90:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@54.179.249.90:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no Dockerfile ec2-user@13.250.60.232:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no create-container-image.yaml ec2-user@13.250.60.232:/home/ec2-user"
                     }
                 }
             
         } 
-   stage('Deploy Artifacts to Production') {
+    stage('Build Container Image') {
             
             steps {
-                  sshagent(['ssh_keys']) {
+                  sshagent(['SSH_key']) {
                        
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.249.90 -C \"sudo kubectl apply -f Create-k8s-deployment.yaml\""
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@13.250.60.232 -C \"sudo ansible-playbook create-container-image.yaml\""
+                        
+                    }
+                }
+            
+        } 
+    stage('Copy Deployent & Service Defination to K8s Master') {
+            
+            steps {
+                  sshagent(['SSH_key']) {
+                       
+                        sh "scp -o StrictHostKeyChecking=no create-k8s-deployment.yaml ec2-user@54.179.249.90:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@54.179.249.90:/home/ec2-user"
+                    }
+                }
+            
+        }     
+    stage('Deploy Artifacts to Production') {
+            
+            steps {
+                  sshagent(['SSH_key']) {
+
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.249.90 -C \"sudo kubectl delete deployment login-deploy\""
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.249.90 -C \"sudo kubectl apply -f create-k8s-deployment.yaml\""
                         sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.249.90 -C \"sudo kubectl apply -f nodePort.yaml\""
                         
                     }
                 }
             
-    
+        } 
+         
+   } 
+}
