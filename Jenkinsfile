@@ -2,7 +2,7 @@ pipeline {
   agent {label "javaloginapp"}
   tools {
   
-  maven 'Maven'
+  maven 'maven'
    
   }
     stages {
