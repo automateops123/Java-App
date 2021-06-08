@@ -3,13 +3,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: login-deploy
-  labels:
-    app: login-app
 spec:
-  replicas: 1
   selector:
-    matchLabels:
-      app: login-app
+     matchlabels:
+        app: login-app
+  replicas: 1
+  strategy:
+     type: RollingUpdate
+     rollingUpdate:
+         maxSurge: 1
+         maxUnavailable: 1
+  
   template:
     metadata:
       labels:
@@ -17,6 +21,7 @@ spec:
     spec:
       containers:
       - name: login-container
-        image: saikumar0803/bike:6.0
+        image: saikumar0803/bike
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
