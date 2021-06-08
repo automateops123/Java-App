@@ -55,7 +55,7 @@ pipeline {
                   sh "./ChangeTag.sh ${DOCKER_TAG}"
                   sshagent(['ssh_keys']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no k8s-deployment.yaml ec2-user@54.179.249.90:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no K8s-deployement.yaml ec2-user@54.179.249.90:/home/ec2-user"
                         sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@54.179.249.90:/home/ec2-user"
                     }
                 }
