@@ -2,7 +2,7 @@ pipeline {
   agent any
   tools {
   
-  maven 'Maven'
+  maven 'maven'
    
   }
     stages {
@@ -32,8 +32,9 @@ pipeline {
     }
 
        stage ('docker login and push') {
-         withCredentials([string(credentialsId: 'Dockerhub', variable: 'Docker')]) {
-           sh "docker login -u saikumar0803 -p ${Docker}"
+           steps {
+               withCredentials([string(credentialsId: 'Dockerhub', variable: 'Docker')]) {
+               sh "docker login -u saikumar0803 -p ${Docker}"
      
          }
         
@@ -67,4 +68,6 @@ pipeline {
                 }
             
         } 
+         
+   } 
 }
