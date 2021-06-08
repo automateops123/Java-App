@@ -24,7 +24,8 @@ pipeline {
       }
     stage ('build image') {
         steps {
-
+       
+             sh "cp /var/lib/jenkins/workspace/Jenkins-Pipeline/java-source/target/iwayQApp-2.0-RELEASE.war ."
              sh "docker build -t saikumar0803/bike:6.0 ."
 
         }
