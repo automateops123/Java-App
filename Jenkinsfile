@@ -27,7 +27,7 @@ pipeline {
          
       }
     
-   Stage ("Build Docker Images") {
+   Stage ('Build Docker Images'){
         
          sh "docker build -t saikumar0803/jenkins:${VERSION}"
    
