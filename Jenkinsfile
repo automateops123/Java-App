@@ -50,7 +50,7 @@ pipeline {
             steps {
                   sshagent(['ssh_keys']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no create-k8s-deployment.yaml ec2-user@54.179.249.90:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no Create-k8s-deployment.yaml ec2-user@54.179.249.90:/home/ec2-user"
                         sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@54.179.249.90:/home/ec2-user"
                     }
                 }
@@ -62,7 +62,7 @@ pipeline {
                   sshagent(['ssh_keys']) {
 
                         sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.249.90 -C \"sudo kubectl delete deployment login-deploy\""
-                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.249.90 -C \"sudo kubectl apply -f create-k8s-deployment.yaml\""
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.249.90 -C \"sudo kubectl apply -f Create-k8s-deployment.yaml\""
                         sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.249.90 -C \"sudo kubectl apply -f nodePort.yaml\""
                         
                     }
