@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: login-container
-        image: saikumar0803/bike:tagVersion
+        image: saikumar0803/javaapp:tagVersion
         imagePullPolicy : Always
         ports:
         - containerPort: 8080
