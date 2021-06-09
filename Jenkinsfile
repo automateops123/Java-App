@@ -25,7 +25,7 @@ pipeline {
         }
          
       }
-      stage ('build image') {
+      stage ('Build Docker image') {
         steps {
        
              sh "cp /var/lib/jenkins/workspace/Jenkins-Pipeline/java-source/target/iwayQApp-2.0-RELEASE.war ."
@@ -48,28 +48,28 @@ pipeline {
        
     }
    
-    stage('Copy Deployent & Service Defination to K8s Master') {
+    stage('Copy Definition files to K8s Master') {
             
             steps {
                   sh "chmod +x ChangeTag.sh"
                   sh "./ChangeTag.sh ${DOCKER_TAG}"
                   sshagent(['ssh_keys']) {
                        
-                        sh "scp -o StrictHostKeyChecking=no K8s-deployement.yaml ec2-user@54.179.249.90:/home/ec2-user"
-                        sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@54.179.249.90:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no K8s-deployement.yaml ec2-user@3.0.99.117:/home/ec2-user"
+                        sh "scp -o StrictHostKeyChecking=no nodePort.yaml ec2-user@3.0.99.117:/home/ec2-user"
                     }
                 }
             
         }     
-      stage('Deploy Artifacts to Production') {
+      stage('Deploy Production') {
             
             steps {
                   sshagent(['ssh_keys']) {
                        script{
                           try{
-                               sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.249.90 -C \"sudo kubectl apply -f . --validate=false\""
+                               sh "ssh -o StrictHostKeyChecking=no ec2-user@3.0.99.117 -C \"sudo kubectl apply -f . --validate=false\""
                           }catch(error){
-                               sh "ssh -o StrictHostKeyChecking=no ec2-user@54.179.249.90 -C \"sudo kubectl create -f . --validate=false\""
+                               sh "ssh -o StrictHostKeyChecking=no ec2-user@3.0.99.117 -C \"sudo kubectl create -f . --validate=false\""
                         
                     }
                 }
