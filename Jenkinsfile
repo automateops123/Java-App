@@ -39,8 +39,8 @@ pipeline {
       stage ('Build Docker image') {
         steps {
        
-             sh "cp /var/lib/jenkins/workspace/Jenkins-Pipeline/java-source/target/iwayQApp-2.0-RELEASE.war ."
-             sh "docker build . -t saikumar0803/bike:${DOCKER_TAG} "
+             sh "cp /var/lib/jenkins/workspace/Jenkins-Pipeline/java-source/target/login-1.0.war ."
+             sh "docker build . -t saikumar0803/javaapp:${DOCKER_TAG} "
 
         }
        
@@ -53,7 +53,7 @@ pipeline {
      
          }
         
-             sh "docker push saikumar0803/bike:${DOCKER_TAG}"
+             sh "docker push saikumar0803/javaapp:${DOCKER_TAG}"
 
         }
        
